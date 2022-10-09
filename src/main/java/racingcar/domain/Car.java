@@ -1,7 +1,10 @@
 package racingcar.domain;
 
 public class Car {
-    String name;
+    public static final int NAME_MAX_LENGTH = 5;
+    public static final int MOVE_MIN_NUMBER = 4;
+    private final String name;
+    private int position;
 
     public Car(String name) {
         if (isNotValidName(name)) {
@@ -11,7 +14,20 @@ public class Car {
     }
 
     private boolean isNotValidName(String name) {
-        int NAME_MAX_LENGTH = 5;
         return (name.isEmpty() || name.length() > NAME_MAX_LENGTH);
+    }
+
+    public void move(int randomValue) {
+        if (randomValue >= MOVE_MIN_NUMBER) {
+            this.position++;
+        }
+    }
+
+    public String name() {
+        return this.name;
+    }
+
+    public int position() {
+        return this.position;
     }
 }
