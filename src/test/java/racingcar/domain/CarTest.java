@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
@@ -42,5 +43,16 @@ public class CarTest {
 
         car.move(number);
         assertThat(car.position()).isEqualTo(expectedValue);
+    }
+
+    @DisplayName("position이_maxPostion인지_값을_반환한다.")
+    @CsvSource(value = {"4:1:true", "4:2:false"}, delimiter = ':')
+    void position이_maxPostion인지_값을_반환한다(int randomNumber, int maxPosition, boolean result) {
+        Car car = new Car("test");
+        for (int i = 0; i < maxPosition; i++) {
+            car.move(randomNumber);
+        }
+
+        assertThat(car.isMaxPosition(maxPosition)).isEqualTo(result);
     }
 }
