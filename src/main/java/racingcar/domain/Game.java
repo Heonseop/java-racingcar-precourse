@@ -1,21 +1,23 @@
 package racingcar.domain;
 
 public class Game {
-    private final Cars cars;
-    private final int roundNumber;
-
-    public Game(String inputName, int roundNumber) {
-        if (roundNumber < 0) throw new IllegalArgumentException();
-        this.cars = new Cars(inputName);
-        this.roundNumber = roundNumber;
-    }
+    private Cars cars;
+    private RoundNumber roundNumber;
 
     public Cars cars() {
         return cars;
     }
 
-    public int roundNumber() {
+    public RoundNumber roundNumber() {
         return roundNumber;
+    }
+
+    public void setCars(String carNames) {
+        this.cars = new Cars(carNames);
+    }
+
+    public void setRoundNumber(String roundNumber) {
+        this.roundNumber = new RoundNumber(roundNumber);
     }
 
     public void startGame() {

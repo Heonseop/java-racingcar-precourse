@@ -11,26 +11,36 @@ public class GameTest {
     @Test
     void 객체_생성_성공() {
         String inputName = "pobi,crong,honux";
-        int roundNumber = 5;
+        String roundNumber = "5";
 
-        assertThatNoException().isThrownBy(() -> new Game(inputName, roundNumber));
+        assertThatNoException().isThrownBy(() -> {
+            Game game = new Game();
+            game.setCars(inputName);
+            game.setRoundNumber(roundNumber);
+        });
     }
 
     @DisplayName("roundNumber_0_미만이면_에러발생")
     @Test
     void roundNumber_0_미만이면_에러발생() {
         String inputName = "pobi,crong,honux";
-        int roundNumber = -1;
+        String roundNumber = "-1";
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new Game(inputName, roundNumber));
+                .isThrownBy(() -> {
+                    Game game = new Game();
+                    game.setCars(inputName);
+                    game.setRoundNumber(roundNumber);
+                });
     }
 
     @DisplayName("startGame_함수_테스트")
     @Test
     void startGame_함수_테스트() {
         String inputName = "pobi,crong,honux";
-        int roundNumber = 5;
-        Game game = new Game(inputName, roundNumber);
+        String roundNumber = "5";
+        Game game = new Game();
+        game.setCars(inputName);
+        game.setRoundNumber(roundNumber);
         assertThatNoException().isThrownBy(game::startGame);
     }
 }
