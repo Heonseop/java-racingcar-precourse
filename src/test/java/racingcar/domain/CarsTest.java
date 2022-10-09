@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class CarsTest {
@@ -28,5 +27,13 @@ public class CarsTest {
         String inputName = "";
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new Cars(inputName));
+    }
+
+    @DisplayName("moveCars_정상_실행")
+    @Test
+    void moveCars_정상_실행() {
+        String inputName = "pobi,crong,honux";
+        Cars cars = new Cars(inputName);
+        assertThatNoException().isThrownBy(cars::moveCars);
     }
 }

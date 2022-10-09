@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.util.RandomUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,5 +24,11 @@ public class Cars {
 
     public List<Car> cars() {
         return this.cars;
+    }
+
+    public void moveCars() {
+        for (Car car : cars) {
+            car.move(RandomUtils.getRandomNumber());
+        }
     }
 }

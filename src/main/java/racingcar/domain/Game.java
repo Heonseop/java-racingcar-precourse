@@ -17,4 +17,8 @@ public class Game {
     public int roundNumber() {
         return roundNumber;
     }
+
+    public void startGame() {
+        cars.moveCars();
+    }
 }

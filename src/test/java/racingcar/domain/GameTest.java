@@ -24,4 +24,13 @@ public class GameTest {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new Game(inputName, roundNumber));
     }
+
+    @DisplayName("startGame_함수_테스트")
+    @Test
+    void startGame_함수_테스트() {
+        String inputName = "pobi,crong,honux";
+        int roundNumber = 5;
+        Game game = new Game(inputName, roundNumber);
+        assertThatNoException().isThrownBy(game::startGame);
+    }
 }
