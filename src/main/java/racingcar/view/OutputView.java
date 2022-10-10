@@ -2,6 +2,7 @@ package racingcar.view;
 
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.domain.Position;
 import racingcar.domain.Winner;
 import racingcar.message.ErrorMessage;
 import racingcar.message.OutputMessage;
@@ -27,8 +28,10 @@ public class OutputView {
         StringBuilder builder = new StringBuilder();
         builder.append(car.name());
         builder.append(" : ");
-        for (int i = 0; i < car.position(); i++) {
+        Position currentIndex = new Position(0);
+        while (car.position().isBiggerPosition(currentIndex)) {
             builder.append("-");
+            currentIndex.plus(1);
         }
         System.out.println(builder);
     }

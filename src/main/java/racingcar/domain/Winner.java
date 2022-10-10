@@ -12,7 +12,7 @@ public class Winner {
     }
 
     public List<String> getWinners() {
-        int maxDistance = getMaxDistance();
+        Position maxDistance = getMaxDistance();
         winners = new ArrayList<>();
         for (Car car : cars.cars()) {
             setWinner(car, maxDistance);
@@ -20,16 +20,20 @@ public class Winner {
         return winners;
     }
 
-    private int getMaxDistance() {
-        int result = 0;
+    private Position getMaxDistance() {
+        Position result = new Position(0);
         for (Car car : cars.cars()) {
-            result = Math.max(result, car.position());
+            result = setBiggerPosition(result, car.position());
         }
         return result;
     }
 
-    private void setWinner(Car car, int maxDistance) {
-        if (car.isMaxPosition(maxDistance)) {
+    private Position setBiggerPosition(Position position, Position otherPosition) {
+        return (position.isBiggerPosition(otherPosition)) ? position : otherPosition;
+    }
+
+    private void setWinner(Car car, Position maxDistance) {
+        if (car.position().isMaxPosition(maxDistance)) {
             winners.add(car.name());
         }
     }
