@@ -13,6 +13,7 @@ public class GameController {
         game = new Game();
         setRacingCars();
         setRoundNumber();
+        OutputView.printBlankLine();
     }
 
     private void setRacingCars() {
