@@ -3,6 +3,7 @@ package racingcar.view;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.Winner;
+import racingcar.message.ErrorMessage;
 import racingcar.message.OutputMessage;
 
 public class OutputView {
@@ -30,5 +31,9 @@ public class OutputView {
             builder.append("-");
         }
         System.out.println(builder);
+    }
+
+    public static void printError(IllegalArgumentException e) {
+        System.out.println(ErrorMessage.ERROR_PREFIX + e.getMessage());
     }
 }

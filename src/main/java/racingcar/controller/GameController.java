@@ -18,6 +18,7 @@ public class GameController {
         try {
             game.setCars(InputView.inputCarNames());
         } catch (IllegalArgumentException e) {
+            OutputView.printError(e);
             setRacingCars();
         }
     }
@@ -26,6 +27,7 @@ public class GameController {
         try {
             game.setRoundNumber(InputView.inputGameRound());
         } catch (IllegalArgumentException e) {
+            OutputView.printError(e);
             setRoundNumber();
         }
     }

@@ -1,15 +1,20 @@
 package racingcar.domain;
 
 import java.util.Objects;
+import racingcar.message.ErrorMessage;
 
 public class RoundNumber {
     private static final int MIN_NUM = 0;
     private final int num;
 
     public RoundNumber(String num) {
-        this.num = Integer.parseInt(num);
-        if (this.num <= MIN_NUM) {
-            throw new IllegalArgumentException();
+        try {
+            this.num = Integer.parseInt(num);
+            if (this.num <= MIN_NUM) {
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(ErrorMessage.ERROR_ROUND_NUMBER_NOT_VALID);
         }
     }
 

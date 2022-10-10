@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.message.ErrorMessage;
+
 public class Car {
     public static final int NAME_MAX_LENGTH = 5;
     public static final int MOVE_MIN_NUMBER = 4;
@@ -8,7 +10,7 @@ public class Car {
 
     public Car(String name) {
         if (isNotValidName(name)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.ERROR_INPUT_CAR_NAMES);
         }
         this.name = name;
     }
