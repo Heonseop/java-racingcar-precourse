@@ -34,7 +34,7 @@ public class Winner {
 
     private void setWinner(Car car, Position maxDistance) {
         if (car.position().isMaxPosition(maxDistance)) {
-            winners.add(car.name());
+            winners.add(car.name().toString());
         }
     }
 }

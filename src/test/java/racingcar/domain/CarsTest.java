@@ -1,12 +1,13 @@
 package racingcar.domain;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.assertThatNoException;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 import java.util.List;
-
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertAll;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 public class CarsTest {
     @DisplayName("이름이_입력되면_구분자_기준으로_각각_객체가_생성된다")
@@ -15,9 +16,9 @@ public class CarsTest {
         String inputName = "pobi,crong,honux";
         List<Car> cars = new Cars(inputName).cars();
         assertAll(
-                () -> assertThat(cars.get(0).name()).isEqualTo("pobi"),
-                () -> assertThat(cars.get(1).name()).isEqualTo("crong"),
-                () -> assertThat(cars.get(2).name()).isEqualTo("honux")
+                () -> assertThat(cars.get(0).name()).isEqualTo(new CarName("pobi")),
+                () -> assertThat(cars.get(1).name()).isEqualTo(new CarName("crong")),
+                () -> assertThat(cars.get(2).name()).isEqualTo(new CarName("honux"))
         );
     }
 

@@ -1,25 +1,16 @@
 package racingcar.domain;
 
-import racingcar.message.ErrorMessage;
-
 public class Car {
-    public static final int NAME_MAX_LENGTH = 5;
     public static final int MOVE_MIN_NUMBER = 4;
     public static final int MOVE_DISTANCE = 1;
 
-    private final String name;
+    private final CarName name;
     private final Position position;
 
     public Car(String name) {
-        if (isNotValidName(name)) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_INPUT_CAR_NAMES);
-        }
-        this.name = name;
-        this.position = new Position(0);
-    }
 
-    private boolean isNotValidName(String name) {
-        return (name.isEmpty() || name.length() > NAME_MAX_LENGTH);
+        this.name = new CarName(name);
+        this.position = new Position(0);
     }
 
     public void move(int randomValue) {
@@ -28,7 +19,7 @@ public class Car {
         }
     }
 
-    public String name() {
+    public CarName name() {
         return this.name;
     }
 
