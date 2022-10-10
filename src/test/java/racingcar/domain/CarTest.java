@@ -1,11 +1,13 @@
 package racingcar.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.assertThatNoException;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import static org.assertj.core.api.Assertions.*;
 
 public class CarTest {
     @DisplayName("다섯자_이하_한자이상으로_이름이_입력되면_자동차_정상_생성")
@@ -46,7 +48,8 @@ public class CarTest {
     }
 
     @DisplayName("position이_maxPostion인지_값을_반환한다.")
-    @CsvSource(value = {"4:1:true", "4:2:false"}, delimiter = ':')
+    @ParameterizedTest
+    @CsvSource(value = {"4:1:true", "3:2:false"}, delimiter = ':')
     void position이_maxPostion인지_값을_반환한다(int randomNumber, int maxPosition, boolean result) {
         Car car = new Car("test");
         for (int i = 0; i < maxPosition; i++) {
