@@ -1,7 +1,9 @@
 package racingcar.controller;
 
 import racingcar.domain.Game;
+import racingcar.domain.Winner;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class GameController {
     Game game;
@@ -26,5 +28,16 @@ public class GameController {
         } catch (IllegalArgumentException e) {
             setRoundNumber();
         }
+    }
+
+    public void playGame() {
+        int currentRound = 0;
+        OutputView.printResult();
+        while (!game.roundNumber().isFinalRoundNumber(currentRound)) {
+            game.startGame();
+            OutputView.printCurrentRoundResult(game.cars());
+            currentRound++;
+        }
+        OutputView.printWinners(new Winner(game.cars()));
     }
 }

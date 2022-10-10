@@ -8,17 +8,27 @@ public class RoundNumber {
 
     public RoundNumber(String num) {
         this.num = Integer.parseInt(num);
-        if (this.num <= MIN_NUM) throw new IllegalArgumentException();
+        if (this.num <= MIN_NUM) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public int getNum() {
         return num;
     }
 
+    public boolean isFinalRoundNumber(int num) {
+        return this.num == num;
+    }
+
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         RoundNumber that = (RoundNumber) o;
         return num == that.num;
     }
