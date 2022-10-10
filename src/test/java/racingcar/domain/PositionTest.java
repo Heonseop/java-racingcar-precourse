@@ -40,4 +40,12 @@ public class PositionTest {
         Position expectedPosition = new Position(maxPosition);
         assertThat(testPosition.isMaxPosition(expectedPosition)).isEqualTo(result);
     }
+
+    @DisplayName("plus_함수_체크")
+    @Test
+    void plus_함수_체크() {
+        Position position = new Position(0);
+        position.plus(1);
+        assertThat(position).isEqualTo(new Position(1));
+    }
 }

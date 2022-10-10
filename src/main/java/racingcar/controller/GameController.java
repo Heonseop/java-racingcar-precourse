@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.domain.Game;
+import racingcar.domain.RoundNumber;
 import racingcar.domain.Winner;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -33,12 +34,12 @@ public class GameController {
     }
 
     public void playGame() {
-        int currentRound = 0;
+        RoundNumber currentRound = new RoundNumber();
         OutputView.printResult();
         while (!game.roundNumber().isFinalRoundNumber(currentRound)) {
             game.startGame();
             OutputView.printCurrentRoundResult(game.cars());
-            currentRound++;
+            currentRound.plus();
         }
         OutputView.printWinners(new Winner(game.cars()));
     }

@@ -5,12 +5,16 @@ import racingcar.message.ErrorMessage;
 
 public class RoundNumber {
     private static final int MIN_NUM = 0;
-    private final int num;
+    private int num;
+
+    public RoundNumber() {
+        this.num = 0;
+    }
 
     public RoundNumber(String num) {
         try {
             this.num = Integer.parseInt(num);
-            if (this.num <= MIN_NUM) {
+            if (this.num < MIN_NUM) {
                 throw new IllegalArgumentException();
             }
         } catch (IllegalArgumentException e) {
@@ -18,12 +22,12 @@ public class RoundNumber {
         }
     }
 
-    public int getNum() {
-        return num;
+    public boolean isFinalRoundNumber(RoundNumber otherNum) {
+        return this.num == otherNum.num;
     }
 
-    public boolean isFinalRoundNumber(int num) {
-        return this.num == num;
+    public void plus() {
+        this.num++;
     }
 
     @Override
